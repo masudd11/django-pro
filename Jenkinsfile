@@ -31,7 +31,7 @@ pipeline {
             steps{
                 echo "deploying on kubernetes cluster"
                 sh 'pwd'   
-                sh "sed -i 's/gcr.io/devops-374608/django-gunicorn:${BUILD_NUMBER}/g' pyapp.yaml"
+                sh "sed -i 's/tagversion/${BUILD_NUMBER}/g' pyapp.yaml"
                 step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'pyapp.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
             }
         } 
