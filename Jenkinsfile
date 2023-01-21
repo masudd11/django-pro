@@ -14,8 +14,8 @@ pipeline {
     stages {
         stage('pull docker image form dockerhub') {
             steps {
-                sh 'docker pull masudd11/djnago-gunicorn:slim01'
-                sh 'docker tag masudd11/djnago-gunicorn:slim01 gcr.io/devops-374608/django-gunicorn:${BUILD_NUMBER}'
+                sh 'docker pull masudd11/django-gunicorn:slim01'
+                sh 'docker tag masudd11/django-gunicorn:slim01 gcr.io/devops-374608/django-gunicorn:${BUILD_NUMBER}'
             }    
         }
         stage("Push Docker Image GCR registry") {
